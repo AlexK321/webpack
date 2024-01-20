@@ -1,8 +1,4 @@
-import HtmlWebpackPlugin from "html-webpack-plugin";
 import path from "path";
-import webpack from "webpack";
-import MiniCssExtractPlugin from "mini-css-extract-plugin";
-import type { Configuration as DevServerConfiguration } from "webpack-dev-server";
 import { buildWebpack } from "./webpackConfig/buildWebpack";
 
 interface IEnv {

@@ -4,6 +4,8 @@ import { buildResolve } from "./buildResolve";
 import { buildDevServer } from "./buildDevServer";
 import { buildPlugins } from "./buildPlugins";
 import { buildLoaders } from "./buildLoaders";
+// не удалять его!
+import type { Configuration as DevServerConfiguration } from "webpack-dev-server";
 
 export const buildWebpack = (options: IWebpackOptions): webpack.Configuration => {
 
