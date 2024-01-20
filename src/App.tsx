@@ -4,7 +4,6 @@ import { First } from './components/First/First';
 
 
 export const App = () => {
-
   const LazySecond =  lazy(() => import('./components/Second/Second'));
   const LazySecondPage =  () => {
     return (

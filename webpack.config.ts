@@ -12,6 +12,7 @@ export interface IWebpackOptions extends IEnv {
     entry: string;
     output: string;
     html: string;
+    src: string;
   };
 }
 
@@ -21,6 +22,7 @@ export default (env: IEnv) => {
       entry: path.resolve(__dirname, "src", "index.tsx"),
       output: path.resolve(__dirname, "build"),
       html: path.resolve(__dirname, "public", "index.html"),
+      src: path.resolve(__dirname, "src"),
     },
     mode: env.mode,
     port: env.port,

@@ -11,7 +11,12 @@
     "esModuleInterop": true,
     // allowSyntheticDefaultImports если какая то библиотека не имеет дефолтного импорта - благодаря этому можно использовать импорт по умолчанию
     // пример import foo from "packet" равносильно import * as foo from "packet"
-    "allowSyntheticDefaultImports": true
+    "allowSyntheticDefaultImports": true,
+    // для создания алиаса для пути обязателен baseUrl, paths. Так же прописать их в вебпаке в resolve
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"]
+    }
   },
   "ts-node": {
     "compilerOptions": {

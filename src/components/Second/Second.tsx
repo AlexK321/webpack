@@ -1,4 +1,4 @@
-import styles from  "./Second.module.scss";
+import styles from  "@/components/Second/Second.module.scss";
 
 const Second = () => {
   console.log("Hello World");
