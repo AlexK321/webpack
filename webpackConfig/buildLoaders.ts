@@ -25,7 +25,7 @@ export const buildLoaders = (options: IWebpackOptions): webpack.Configuration['m
     ],
 	}
 };
- 
+
 
 
 

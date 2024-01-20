@@ -15,13 +15,13 @@ export const buildPlugins = (options: IWebpackOptions): webpack.Configuration['p
     new webpack.ProgressPlugin(),
     // плагин минификации и выноса стилей в отдельный фаил
     new MiniCssExtractPlugin({
-      // Настройки плагина в каком виде сохранять (необязательно) и т д 
+      // Настройки плагина в каком виде сохранять (необязательно) и т д
       filename: "./css/[name].css",
       chunkFilename: "[id].css",
     })
   ]
 };
- 
+
 
 
 

@@ -9,4 +9,3 @@ export const buildDevServer = (options: IWebpackOptions): webpack.Configuration[
       hot: true,
     }
 };
- 

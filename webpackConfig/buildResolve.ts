@@ -7,4 +7,3 @@ export const buildResolve = (options: IWebpackOptions): webpack.Configuration['r
 		extensions: [".tsx", ".ts", ".js"],
 	}
 }
- 
