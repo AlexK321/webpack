@@ -2,8 +2,10 @@ import webpack from "webpack";
 import { IWebpackOptions } from "../webpack.config";
 import HtmlWebpackPlugin from "html-webpack-plugin";
 import MiniCssExtractPlugin from "mini-css-extract-plugin";
+import { BundleAnalyzerPlugin } from "webpack-bundle-analyzer";
 
 export const buildPlugins = (options: IWebpackOptions): webpack.Configuration['plugins'] => {
+  const isDev = options.mode === 'development';
 
   return [
     // плагин для сборки html-файла и добавления в него скрипта из index.js
@@ -18,7 +20,10 @@ export const buildPlugins = (options: IWebpackOptions): webpack.Configuration['p
       // Настройки плагина в каком виде сохранять (необязательно) и т д
       filename: "./css/[name].css",
       chunkFilename: "[id].css",
-    })
+    }),
+    // при сборке билда открывается страница в браузере, где видны размеры составляющих папок и фаилов бандла
+    // добавил кастомный флаг isAnalyze, по которому из скрипта определять открывать аналайзер или нет
+    (!isDev && options.isAnalyze) ? new BundleAnalyzerPlugin() : false
   ]
 };
 

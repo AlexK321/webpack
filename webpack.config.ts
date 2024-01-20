@@ -4,16 +4,15 @@ import { buildWebpack } from "./webpackConfig/buildWebpack";
 interface IEnv {
   mode: "production" | "development";
   port: number;
+  isAnalyze: boolean;
 }
 
-export interface IWebpackOptions {
+export interface IWebpackOptions extends IEnv {
   path: {
     entry: string;
     output: string;
     html: string;
   };
-  port: number;
-  mode: "production" | "development";
 }
 
 export default (env: IEnv) => {
@@ -24,7 +23,8 @@ export default (env: IEnv) => {
       html: path.resolve(__dirname, "public", "index.html"),
     },
     mode: env.mode,
-    port: env.port
+    port: env.port,
+    isAnalyze: env.isAnalyze || false,
   };
 
   const config = buildWebpack(configOptions);

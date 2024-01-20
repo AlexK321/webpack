@@ -1,6 +1,6 @@
-import styles from  "./App.module.scss";
+import styles from  "./First.module.scss";
 
-export const App = () => {
+export const First = () => {
   console.log("Hello World");
   return (
     <div className={styles.container}>
