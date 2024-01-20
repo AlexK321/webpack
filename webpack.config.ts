@@ -1,9 +1,11 @@
 import HtmlWebpackPlugin from "html-webpack-plugin";
 import path from "path";
 import webpack from "webpack";
+import type { Configuration as DevServerConfiguration } from "webpack-dev-server";
 
 interface IEnv {
   mode: "production" | "development";
+  port: number;
 }
 
 export default (env: IEnv) => {
@@ -45,6 +47,15 @@ export default (env: IEnv) => {
     // пример: import { a } from './src/file'; => import { a } from './src/file.ts';
     resolve: {
       extensions: [".tsx", ".ts", ".js"],
+    },
+    // инструмент для отслеживания ошибок. При сборке бандла вебпак создает один js фаила. При возникновении ошибки понять ее реальное местоположение в коде
+    // очень сложно. В данном случае плагин отслеживает ошибки в js фаилах и показывает их в консоли
+    devtool: "inline-source-map",
+    // пересборка проекта в дев режиме при каждом изменении фаила
+    devServer: {
+      static: path.resolve(__dirname, "build"),
+      port: env.port || 3000,
+      hot: true,
     },
   };
 
