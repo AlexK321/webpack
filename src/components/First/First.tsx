@@ -8,7 +8,8 @@ export const First = () => {
     <div className={styles.container}>
       <h1>Webpack</h1>
       <img src={image} alt="" />
-      <Svg fill='green' width={50} height={50}/>
+      <Svg fill='dark-grey' width={50} height={50}/>
+      {__BROWSER_SUPPORTS_HTML5 && "Это текст отрисовывается исходя их принципа tree shaking"}
     </div>
   );
 };
