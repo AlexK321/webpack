@@ -1,4 +1,4 @@
-import webpack from "webpack";
+import webpack, { runtime } from "webpack";
 import { IWebpackOptions } from "../webpack.config";
 import MiniCssExtractPlugin from "mini-css-extract-plugin";
 
@@ -8,14 +8,28 @@ export const buildLoaders = (options: IWebpackOptions): webpack.Configuration['m
   return {
     // лоадеры
     rules: [
-			{
-				//регулярное вырожение для выборки фаилов
-				test: /\.tsx?$/,
-				// какой лоадер использовать
-				use: "ts-loader",
-				// исключаем папку node_modules
-				exclude: /node_modules/,
-			},
+      {
+        test: /\.tsx?$/,
+        exclude: /node_modules/,
+        use: {
+          loader: "babel-loader",
+          // для примера вынес эти настройки в babel.config.json. Хотя можно и сдесь
+          // options: {
+          //   // необходимые пресеты для корректной работы с TS и React
+          //   presets: [
+          //     '@babel/preset-env',
+          //     '@babel/preset-typescript',
+          //     ['@babel/preset-react', {runtime: 'automatic'}]
+          //   ]
+          // }
+        }
+      },
+      // вместо ts-loader подключил babel-loader выше
+			// {
+			// 	test: /\.tsx?$/,
+			// 	use: "ts-loader",
+			// 	exclude: /node_modules/,
+			// },
 			{
 				test: /\.s[ac]ss$/i,
 				// не забывать про порядок. Выполняется с конца в начало
