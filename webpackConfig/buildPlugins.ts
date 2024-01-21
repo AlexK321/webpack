@@ -5,6 +5,8 @@ import MiniCssExtractPlugin from "mini-css-extract-plugin";
 import { BundleAnalyzerPlugin } from "webpack-bundle-analyzer";
 import ForkTsCheckerWebpackPlugin from "fork-ts-checker-webpack-plugin";
 import ReactRefreshWebpackPlugin from "@pmmmwh/react-refresh-webpack-plugin";
+import CopyPlugin from "copy-webpack-plugin";
+import path from "path";
 
 export const buildPlugins = (options: IWebpackOptions): webpack.Configuration['plugins'] => {
   const isDev = options.mode === 'development';
@@ -35,6 +37,15 @@ export const buildPlugins = (options: IWebpackOptions): webpack.Configuration['p
     new ForkTsCheckerWebpackPlugin(),
     // плагин для дев режима и реакта, что бы при изменении фаила вебпак не перезагружал страницу, а обновлял ту же
     isDev ? new ReactRefreshWebpackPlugin() : false,
+    // плагин для копирования статических фаилов
+    new CopyPlugin({
+      patterns: [
+        {
+          from: path.resolve(options.path.src, 'assets', 'copyFolder'),
+          to: path.resolve(options.path.output, 'assets', 'copyFolder')
+        },
+      ],
+    }),
   ]
 };
 
