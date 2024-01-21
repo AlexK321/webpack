@@ -4,6 +4,7 @@ import Svg from  "@/assets/svg.svg";
 
 export const First = () => {
   console.log("Hello World");
+
   return (
     <div className={styles.container}>
       <h1>Webpack</h1>
