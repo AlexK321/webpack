@@ -6,6 +6,7 @@ export const buildDevServer = (options: IWebpackOptions): webpack.Configuration[
   return {
       static: options.path.output,
       port: options.port || 3000,
+      // после изменения какого либо фаила происходит обновление страницы браузера
       hot: true,
       // позволяет работать с роутингом Реакта
       historyApiFallback: true,

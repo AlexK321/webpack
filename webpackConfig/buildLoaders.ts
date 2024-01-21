@@ -31,9 +31,33 @@ export const buildLoaders = (options: IWebpackOptions): webpack.Configuration['m
               },
             },
           },
-          "sass-loader"
+          "sass-loader",
         ],
 			},
+      // лоадер обработки картинок
+      {
+        test: /\.(png|jpg|jpeg|gif)$/i,
+        type: 'asset/resource',
+      },
+      // лоадер шрифтов
+      {
+        test: /\.(woff|woff2|eot|ttf|otf)$/i,
+        type: 'asset/resource',
+      },
+      // лоадер svg
+      // при использовании этого лоадера иконка может импортироваться сразу как компонента
+      {
+        test: /\.svg$/,
+        use: [
+          {
+            loader: '@svgr/webpack',
+            options: {
+              // опция нужна для того что бы при передаче иконки размеров менялся не только сам ее контейнер, а вся иконка
+              icon: true,
+            },
+          },
+        ],
+      }
     ],
 	}
 };
